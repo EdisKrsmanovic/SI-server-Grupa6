@@ -1,0 +1,41 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ development ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm test
+      - name: Deploying on droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: 167.99.244.168
+          username: root
+          key: ${{ secrets.SI_SERVER }}
+          port: 22
+          script: |
+            cd /root/Grupa6/SI-server-Grupa6/
+            git clean -f
+            git reset --hard
+            git reset --merge
+            git pull
+            npm install
+            pm2 restart grupa6Servis_Server
+

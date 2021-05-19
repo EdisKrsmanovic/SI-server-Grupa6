@@ -1,0 +1,35 @@
+{
+  "name": "Auth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha --timeout 10000 --exit",
+    "start": "node grupa6Servis.js",
+    "swagger-autogen": "node swagger.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mailgun-js": "^0.22.0",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0",
+    "pg": "^8.5.1",
+    "pg-format": "1.0.4",
+    "qrcode": "^1.4.4",
+    "request": "^2.88.2",
+    "require": "^2.4.20",
+    "speakeasy": "^2.0.0",
+    "swagger-autogen": "^2.7.9",
+    "swagger-ui-express": "^4.1.6",
+    "twilio": "^3.60.0"
+  }
+}
